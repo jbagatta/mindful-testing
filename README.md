@@ -4,7 +4,9 @@
 
 ## Why Test?
 
-Testing is a nontrivial and challenging intellectual endeavor - so why spend the time and effort on it? Testing is **fundamental** to software quality. The first-order goal of software testing is to answer two specific questions:
+Testing is a nontrivial and challenging intellectual endeavor - so why spend the time and effort on it? 
+
+Testing is **fundamental** to software quality. The first-order goal of software testing is to answer two specific questions:
 - *Have we built the correct software?* (i.e. does it satisfy the product/user requirements)
 - *Have we built the software correctly?* (i.e. is it free of bugs/defects)
 
