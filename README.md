@@ -1,6 +1,8 @@
 # Mindful Testing
 #### Or: How I Learned to Stop Worrying and Love the ~~Bomb~~ Process of Creating Comprehensive Test Suites to Do All the Worrying For Me
 
+##### John Bagatta
+
 
 ## Why Test?
 
