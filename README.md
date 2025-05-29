@@ -1,28 +1,33 @@
 # Mindful Testing
 **Or: How I Learned to Stop Worrying and Love the ~~Bomb~~ Process of Creating Comprehensive Test Suites to Do All the Worrying For Me**
 
-
 ## Why Test?
 
-Testing is a nontrivial and challenging intellectual endeavor - so why spend the time and effort on it? 
+Testing is a nontrivial and challenging intellectual endeavor, so the top priority must be to satisfy the existential question: **Why should we spend the time and effort on it?** 
 
-Testing is **fundamental** to software quality. The first-order goal of software testing is to answer two specific questions:
+#### First-Order Benefits
+The first-order goal of software testing is to answer two specific questions before shipping a product or feature. These questions are **fundamental** to verifiable software quality, and thus essential to building the organizational trust that attracts and retains users:
 - *Have we built the correct software?* (i.e. does it satisfy the product/user requirements)
 - *Have we built the software correctly?* (i.e. is it free of bugs/defects)
 
-These answers, alone, make testing worthwhile, but the second order-benefits of well-tested software can be even more valuable as they compound over time: **a solid test suite gives you the confidence to make changes quickly**, relying on the safety net of your test coverage to alert you about any unintended consequences to existing functionality. The sweet spot of testing effort is for the speed imparted by this confidence in your code base to (eventually) outweigh the time and effort spent writing and maintaining tests.
+#### Second-Order Benefits
+That trust alone is enough to make testing worthwhile, but the second order-benefits of well-tested software can be even more valuable as they compound over time: **A solid test suite gives you the confidence to make changes quickly**, relying on the safety net of your test coverage to alert you about any unintended consequences to existing functionality. The sweet spot of testing effort is for the speed imparted by this confidence to (eventually) outweigh the effort spent writing and maintaining tests.
 
-Testing also provides information - to the author of the code, to code reviewers, to future modifiers, and to product stakeholders. Tests can serve as documentation of both high level product specification and internal systemic component expectations. A list of well-constructed test case descriptions can ideally be read over by nontechnical product stakeholders and verified for behavioral correctness, e.g.:
+#### Communication
+Testing also provides information—to the author of the code, to code reviewers, to future maintainers, and to product stakeholders. Tests can serve as documentation of both high level product specification and internal systemic component expectations. A list of well-constructed test case descriptions can ideally be read over by nontechnical product stakeholders and verified for behavioral correctness, e.g.:
 
-- **`Organization status`**
-    - `Returns PENDING for unapproved Organization`
-    - `Returns ACTIVE for approved Organization with current license`
-    - `Returns EXPIRED for approved Organization with expired license`
-    - `Returns ACTIVE for new Organization in trial period`
+- **`User Account Status`**
+    - `Returns PENDING for unverified User`
+    - `Returns ACTIVE for verified User with active Account license`
+    - `Returns EXPIRED for verified User with expired Account license`
+    - `Returns ACTIVE for verified User before trial expiration date`
+    - `Returns ACTIVE for verified User on trial expiration date`
+    - `Returns EXPIRED for verified User after trial expiration date`
 
-Finally, testing is an opportunity to reveal issues with code quality. For instance, code that requires too many tests could probably use stronger constraints (i.e. stronger input typing), or scope refactoring (into subcomponents that can be tested individually as M tests + N tests, instead of MxN tests). *Test smells usually signify code smells.*
+#### Code Clarity
+Finally, testing is an opportunity to reveal issues with code quality. For instance, code that requires too many tests could probably use stronger constraints (i.e. stronger input typing), or scope refactoring (into subcomponents that can be tested individually as M tests + N tests, instead of MxN tests). As a rule, *test smells usually signify code smells.*
 
-Code that is hard to test is also frequently hard to understand. Human code readers tend to think like tests, e.g. *"Okay, so this function does X if Y, but Z if not, and throws an error if W is missing…"* For this reason, testable code strongly correlates to readable code, so testing should be done (or at least planned) early, and code should be written with testing in mind.
+The reason for this is simple. Code that is hard to test is also frequently hard to understand, because human code readers tend to think like tests, e.g. *"Okay, so this function does X if Y, but Z if not, and throws an error if W is missing…"* Testable code strongly correlates to readable code, so testing should be done (or at least planned) early, and code should be written with testing in mind.
 
 
 ## What To Test?
@@ -43,12 +48,12 @@ Test **cohesive units of logic**, with the qualifier “cohesive” meaning diff
 
 #### A Caveat:
 
-It took me a while to learn this, after comparing my experiences between large companies and several startups: **testing effort (especially at the unit test level) should be scaled to the stability of the product**. Things that will change significantly and/or frequently are probably not worth testing as comprehensively as things that are likely to be stable across product redefinitions and feature additions. Anything likely to be refactored or significantly modified ends up feeling tedious to maintain when it generates dozens of unhelpful test failures (which, in turn, discourages refactoring and proper maintenance to begin with). 
+It took me a while to learn this, after comparing my experiences between large companies and several startups, but it's an important point to keep in mind: **testing effort (especially at the unit test level) should be scaled to the stability of the product**. Things that will change significantly and/or frequently are probably not worth testing as comprehensively as things that are likely to be stable across product redefinitions and feature additions. Anything likely to be refactored or significantly modified ends up feeling tedious to maintain when it generates dozens of unhelpful test failures (which, in turn, discourages refactoring and proper maintenance to begin with). 
 
 When in doubt, I generally err on the side of adding tests. It’s easier to delete a redundant or noisy test than it is to add new tests to legacy code in the future.
 
 
-### Can You Express This Wisdom As A Shape?
+#### Can You Express This Wisdom As A Shape?
 
 ![Testing Pyramid](images/pyramid.png)
 
@@ -99,9 +104,9 @@ Generally, good tests tend to:
     - **THEN**: *Assertions and expectations*
         - Outputs and side effects are validated
     - Example:
-        - **GIVEN** An approved Organization with an expired license
-        - **WHEN** I request the status of that Organization
-        - **THEN** The result should be a value of `EXPIRED`
+        - **GIVEN** A verified User with an expired Account license
+        - **WHEN** I request the status of that User
+        - **THEN** The result should be `EXPIRED`
 
 
 ### In conclusion
