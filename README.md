@@ -10,7 +10,6 @@ The first-order goal of software testing is to answer two specific questions bef
 - *Have we built the correct software?* (i.e. does it satisfy the product/user requirements)
 - *Have we built the software correctly?* (i.e. is it free of bugs/defects)
 
-#### Product Benefits
 That trust alone is enough to make testing worthwhile, but the second order-benefits of well-tested software can be even more valuable as they compound over time: **A solid test suite gives you the confidence to make changes quickly**, relying on the safety net of your test coverage to alert you about any unintended consequences to existing functionality. The sweet spot of testing effort is for the speed imparted by this confidence to (eventually) outweigh the effort spent writing and maintaining tests.
 
 #### Communication
