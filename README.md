@@ -5,12 +5,12 @@
 
 Testing is a nontrivial and challenging intellectual endeavor, so the top priority must be to satisfy the existential question: **Why should we spend the time and effort on it?** 
 
-#### First-Order Benefits
+#### Product Benefits (First-Order)
 The first-order goal of software testing is to answer two specific questions before shipping a product or feature. These questions are **fundamental** to verifiable software quality, and thus essential to building the organizational trust that attracts and retains users:
 - *Have we built the correct software?* (i.e. does it satisfy the product/user requirements)
 - *Have we built the software correctly?* (i.e. is it free of bugs/defects)
 
-#### Second-Order Benefits
+#### Product Benefits (Second-Order)
 That trust alone is enough to make testing worthwhile, but the second order-benefits of well-tested software can be even more valuable as they compound over time: **A solid test suite gives you the confidence to make changes quickly**, relying on the safety net of your test coverage to alert you about any unintended consequences to existing functionality. The sweet spot of testing effort is for the speed imparted by this confidence to (eventually) outweigh the effort spent writing and maintaining tests.
 
 #### Communication
